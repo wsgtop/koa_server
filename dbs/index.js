@@ -1,6 +1,6 @@
 import Knex from 'knex'
 
-const dbs = Knex({
+export const dbs = Knex({
   client: 'mysql2',
   connection: {
     host: '127.0.0.1',
@@ -10,5 +10,6 @@ const dbs = Knex({
   },
   acquireConnectionTimeout: 10000
 });
+// const data = await dbs('user').select('*').limit(10)
 
-export default dbs
+// console.log(data);
