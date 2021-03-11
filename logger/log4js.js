@@ -32,7 +32,7 @@ log4js.configure({
     }
   },
   categories: {
-    default: { appenders: ["console"], level: "trace" },
+    default: { appenders: ["console"], level: "TRACE" }, // 可在此更改日志级别调整打印日志情况
     cheese: { appenders: ["console", "file"], level: "trace" },
   }
 });

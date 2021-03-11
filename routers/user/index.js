@@ -7,9 +7,7 @@ router.get("/", async(ctx) => {
   logger.info('断点1')
   console.log('断点1...')
     // const result = await d.getUser()
-  console.log('断点10...', result)
   ctx.body = 'result'
-  return result
 
 });
 router.get("/index", async(ctx) => {
