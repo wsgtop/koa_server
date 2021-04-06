@@ -1,24 +1,26 @@
 import Koa from "koa";
 import koaLogger from "koa-logger";
 import moment from "moment";
-
+import Router from 'koa-router'
 import { logger } from "./logger/log4js.js";
-import router from "./routers/user/index.js";
-import commonRouter from "./routers/common/index.js";
-
+import user from "./routers/user/index.js";
+import svgCaptcha from './routers/svgCaptcha/index.js'
 const app = new Koa();
 // 添加请求日志
 const koaLog = koaLogger(str =>
   logger.debug(moment().format("YYYY-MM-DD HH:mm:ss") + str));
 app.use(koaLog);
 
-//启动路由
-app.use(router.routes());
-app.use(commonRouter.routes());
 
-// 在所有路由中间件最后调用，此时更加ctx.status设置response响应头
-app.use(router.allowedMethods());
-app.use(commonRouter.allowedMethods());
+//启动路由
+const router = new Router()
+router.use('/user',user.routes())
+router.use('/svgCaptcha',svgCaptcha.routes())
+
+app.use(router.routes());
+app.use(router.allowedMethods());// 在所有路由中间件最后调用，此时更加ctx.status设置response响应头
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   logger.info(moment().format("YYYY-MM-DD HH:mm:ss") + "  start server listening on Port " + port);
