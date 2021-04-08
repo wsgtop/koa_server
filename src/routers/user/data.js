@@ -1,18 +1,17 @@
-// import { Logger } from 'log4js'
 import dbs from '../../dbs/index.js'
-import { logger } from '../../logger/log4js.js'
+import { log } from '../../logger/log4js.js'
 
 const getUser = async() => {
   try {
-    logger.info('断点2')
+    log.info('断点2')
     console.log('断点2...')
     const data = await dbs('user').limit(1)
     console.log('断点3...')
     console.log('断点4...', data)
-    logger.info('断点3')
+    log.info('断点3')
     return data
   } catch (error) {
-    logger.error(error)
+    log.error(error)
     throw error
   }
 

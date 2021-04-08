@@ -1,5 +1,5 @@
 import svgCaptycha from "svg-captcha";
-import { logger } from "../../logger/log4js.js";
+import { logger } from "../../../logger/log4js.js";
 /**
  * 默认有四个字符，长度可更改
  * @returns
