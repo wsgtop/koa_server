@@ -3,12 +3,22 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "nodemon",
-      "runtimeExecutable": "nodemon",
+      "name": "启动调试",
       "program": "${workspaceFolder}/app.js",
-      "restart": true,
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-  }
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+
+    {
+      "name": "附加到进程debug",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+
   ]
 }
